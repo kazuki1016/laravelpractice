@@ -13,7 +13,7 @@ class CreateShopsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mst_shop', function (Blueprint $table) {
+        Schema::create('mst_shops', function (Blueprint $table) {
             $table->bigIncrements('shop_cd', 100)->comment('お店コードです');
             $table->string('shop_name', )->comment('お店の名前です');
             $table->string('genre_cd', 1)->comment('ジャンルコードです。1：ケーキ　2：かき氷　3：パフェ　4：アイス　5：和菓子系');

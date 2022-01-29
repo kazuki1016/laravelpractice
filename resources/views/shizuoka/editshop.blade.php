@@ -53,7 +53,7 @@
 							<div class="form-group row">
 								<label for="address" class="col-md-3 col-form-label text-md-center">お店の住所</label>
 								<div class="col-md-9">
-									<input type="text" name="address" id="address" class="form-control @invalid('address')" placeholder="〇〇市からでOK!" >
+									<input type="text" name="address" id="address" class="form-control @invalid('address')" value="{{ old('address', $shop_data->address) }}" placeholder="〇〇市からでOK!" >
 									<small><span class="text-danger"></span>（255字以内）</small>
 									@component('components.invalid_feedback', ['form_name' => 'address'])
 									@endcomponent

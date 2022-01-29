@@ -14,6 +14,7 @@ use App\MyLibrary\DbSelect;
 //ユーザー情報を取得するために読み込み
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class IndexController extends Controller
 {
@@ -66,6 +67,8 @@ class IndexController extends Controller
 			'shop_detail'	=> ['required', 'string', 'max:300'],
 			'address'		=> ['max:255']
 		]);
+
+
 
 		DB::beginTransaction();
 		try {
