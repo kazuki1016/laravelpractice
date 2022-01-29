@@ -4,7 +4,7 @@ namespace App\MyLibrary;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Mstshop;
+use App\MstShop;
 use App\Comment;
 use App\CommentImage;
 
@@ -52,7 +52,7 @@ class DbRegist
 	//お店の更新処理
 	public static function updateShop($request, $filename)
 	{
-		DB::table('Mst_shops')
+		DB::table('mst_shops')
 		->where('shop_cd', $request->shop_cd)
 			->update([
 				'shop_name'		=> $request->shop_name,

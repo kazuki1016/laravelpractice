@@ -4,7 +4,7 @@ namespace App\MyLibrary;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Mstshop;
+use App\MstShop;
 use App\Comment;
 use App\CommentImage;
 
@@ -24,7 +24,7 @@ class DbSelect
 			'sh.shop_detail',
 			'sh.shop_image'
 		])
-			->from('Mst_shops as sh')
+			->from('mst_shops as sh')
 			->leftjoin('mst_cities as ci', function ($join) {
 				$join->on('ci.city_cd', '=', 'sh.city_cd');
 			})
@@ -43,8 +43,8 @@ class DbSelect
 	static public function getShopDetail($shop_cd)
 	{
 		//クエリビルダー
-		$shop_detail = DB::table('Mst_shops')
-			->from('Mst_shops as sh')
+		$shop_detail = DB::table('mst_shops')
+			->from('mst_shops as sh')
 			->leftjoin('mst_cities as ci', function ($join) {
 				$join->on('ci.city_cd', '=', 'sh.city_cd');
 			})
@@ -61,7 +61,7 @@ class DbSelect
 	//お店更新時に写真を取得するselect文
 	static public function getShopImage($shop_cd)
 	{
-		$filename = DB::table('Mst_shops')
+		$filename = DB::table('mst_shops')
 						->where('shop_cd', $shop_cd)
 						->value('shop_image');
 		return $filename;
@@ -82,8 +82,8 @@ class DbSelect
 				'cmt.created_at as comment_date',
 				'usr.name'
 			])
-			->from('Comments as cmt')
-			->leftJoin('Users as usr', function($join){
+			->from('comments as cmt')
+			->leftJoin('users as usr', function($join){
 				$join->on('usr.id', '=', 'cmt.user_cd');
 			})
 			->where('cmt.shop_cd', $shop_cd)
@@ -112,8 +112,8 @@ class DbSelect
 				'cim.comment_cd',
 				'cim.commentimage'
 			])
-			->from('Comment_images as cim')
-			->leftJoin('Comments as cmt', function($join){
+			->from('comment_image as cim')
+			->leftJoin('comments as cmt', function($join){
 				$join->on('cmt.comment_cd', '=', 'cim.comment_cd');
 			})
 			->whereIn('cim.comment_cd', $comment_cds)
@@ -173,7 +173,7 @@ class DbSelect
 			'sh.shop_detail',
 			'sh.shop_image'
 		])
-		->from('Mst_shops as sh')
+		->from('mst_shops as sh')
 		->leftjoin('mst_cities as ci', function ($join) {
 			$join->on('ci.city_cd', '=', 'sh.city_cd');
 		})

@@ -13,7 +13,7 @@ class UpdateShopAddressNotnull extends Migration
      */
     public function up()
     {
-        Schema::table('Mst_shops', function (Blueprint $table) {
+        Schema::table('mst_shops', function (Blueprint $table) {
             //addressのnotnull制約を解除
             $table->string('address')->nullable()->change();
             $table->string('shop_image', 100)->nullable()->change();

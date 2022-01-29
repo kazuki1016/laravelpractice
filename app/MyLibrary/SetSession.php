@@ -30,7 +30,7 @@ class SetSession
 			//セッション登録用の空の配列を定義
 			$session_genre_data = [];
 			//DBから市町村リストを呼び出す
-			$genre_data = \App\Mstgenre::select('genre_cd', 'genre_name')->get()->toArray();
+			$genre_data = \App\MstGenre::select('genre_cd', 'genre_name')->get()->toArray();
 			foreach ($genre_data as $data) {
 				$session_genre_data[$data['genre_cd']] = $data['genre_name'];
 			}
