@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('contact/', 'ContactController@input');
+Route::get('contact/', 'ContactController@input')->name('contact');
 Route::patch('contact/', 'ContactController@confirm');
 Route::post('contact/', 'ContactController@finish');
 

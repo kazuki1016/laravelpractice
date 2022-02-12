@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\MstShop;
 use App\Comment;
 use App\CommentImage;
+use App\Contact;
 
 class DbRegist
 {
@@ -63,6 +64,16 @@ class DbRegist
 				'shop_detail'	=> $request->shop_detail,
 				'updated_at'	=> now()
 			]);
+	}
+
+	//お問合せ内容の登録
+	public static function registContact($request)
+	{
+		Contact::create([
+			'inquirer'			=> $request->inquirer,
+			'email'				=> $request->email,
+			'contact_detail'	=> $request->contact_detail
+		]);
 	}
 
 }

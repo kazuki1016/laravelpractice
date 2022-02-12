@@ -155,6 +155,8 @@ return [
 		'shop_detail'				=> 'お店紹介文',
 		'comment_title'				=> 'コメントタイトル',
 		'comment_body'				=> 'コメント本文',
-		'comment_image'				=> 'コメントに載せる写真'
+		'comment_image'				=> 'コメントに載せる写真',
+        'inquirer'				    => 'お名前',
+        'contact_detail'			=> 'お問合せ内容'
     ],
 ];

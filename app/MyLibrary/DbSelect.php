@@ -112,7 +112,7 @@ class DbSelect
 				'cim.comment_cd',
 				'cim.commentimage'
 			])
-			->from('comment_image as cim')
+			->from('comment_images as cim')
 			->leftJoin('comments as cmt', function($join){
 				$join->on('cmt.comment_cd', '=', 'cim.comment_cd');
 			})

@@ -68,8 +68,6 @@ class IndexController extends Controller
 			'address'		=> ['max:255']
 		]);
 
-
-
 		DB::beginTransaction();
 		try {
 			//ファイル名の取得
