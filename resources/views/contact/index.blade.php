@@ -1,36 +1,55 @@
-@extends('layouts.master_bootstrap')
+@extends('layouts.master_shizuoka')
 @section('title', 'お問い合わせ')
 @section('content')
-    <div class="container p-lg-5 bg-light">
-        <h2 class="text-center mb-5">お問い合わせ</h2>
-        <form method="POST" class="needs-validation">
-            {{ csrf_field() }}
-            {{ method_field('patch') }}
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <label for="lastname">名字</label>
-                    <input type="text" class="form-control" name="lastname" id="lastname" placeholder="名字" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="firstname">名前</label>
-                    <input type="text" class="form-control" name="firstname" id="firstname" placeholder="名前" required>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="email" class="col-sm-2 col-form-label">Eメール</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="email" id="email" placeholder="Eメール" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="textarea">備考</label>
-                <textarea class="form-control" name="textarea" id="textarea" rows="3" placeholder="何かあれば"></textarea>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-12">
-                    <button type="submit" class="btn btn-primary btn-block">確認</button>
-                </div>
-            </div>
-        </form>
-    </div>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-10">
+				<div class="card mt-3 mb-3">
+					<div class="card-header text-center lead">お問い合わせフォーム</div>
+					<div class="card-body">
+						<form method="POST">
+							{{ method_field('patch') }}
+
+							{{-- 問い合わせの人 --}}
+							@csrf
+							<div class="form-group row">
+								<label for="inquirer" class="col-md-3 col-form-label text-md-right">お名前：</label>
+								<div class="col-md-8">
+									<input id="inquirer" type="text" class="form-control @invalid('inquirer')" name="inquirer" value="{{ $inquirer ?? '' ? $inquirer ?? '' : old('inquirer') }}" required autofocus>
+									<small><span class="text-danger"> *必須項目です</span></small>
+									{{-- エラー出力を共通化 --}}
+									@component('components.invalid_feedback', ['form_name' => 'inquirer'])@endcomponent
+								</div>
+							</div>
+
+							{{-- お問合せ者のメールアドレス --}}
+							<div class="form-group row">
+								<label for="email" class="col-md-3 col-form-label text-md-right">メールアドレス：</label>
+								<div class="col-md-8">
+									<input id="email" type="email" class="form-control @invalid('email')" name="email" value="{{ $email ?? '' ? $email ?? '' : old('email') }}" required autocomplete="email">
+									<small><span class="text-danger"> *必須項目です</span></small>
+									@component('components.invalid_feedback', ['form_name' => 'email'])@endcomponent
+								</div>
+							</div>
+
+							{{-- お問合せ内容 --}}
+							<div class="form-group row">
+								<label for="contact_detail" class="col-md-3 col-form-label text-md-right">お問合せ内容：</label>
+								<div class="col-md-8">
+									<textarea class="form-control @invalid('contact_detail')" name="contact_detail" id="contact_detail" cols="100" rows="10" required>{{ $contact_detail ?? '' ? $contact_detail ?? '' : old('contact_detail') }}</textarea>
+									<small><span class="text-danger"> *必須項目です（1000文字以内）</span></small>
+									@component('components.invalid_feedback', ['form_name' => 'contact_detail'])@endcomponent
+								</div>
+							</div>
+							<div class="form-group row mb-0">
+								<div class="col-md-6 offset-md-4">
+									<button type="submit" class="btn btn-primary pl-5 pr-5">確認</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 @endsection
