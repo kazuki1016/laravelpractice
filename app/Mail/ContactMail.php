@@ -34,7 +34,7 @@ class ContactMail extends Mailable
 	{
 		return $this->subject('お問合せ完了のお知らせ')	//メールのタイトル
 					// ->from('hoge@example.com')		//送信元。設定しない場合は.envのMAIL_FROM_ADDRESSに記載されたメールアドレスから送信される
-					->cc('uga@example.com')             //BCCやCCの設定
+					// ->cc('uga@example.com')             //BCCやCCの設定
 					->view('contact.mail')				//テンプレートの呼び出し。textメソッド → 平文テキスト版のメールviewメソッド → HTML版のメール
 					->with('contact', $this->contact)	//withオプションでセットしたデータをテンプレートへ渡す
 		;
